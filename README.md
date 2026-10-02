@@ -8,8 +8,6 @@ A production-ready personal portfolio for **Sarang Nayak Bala**, a Full Stack AI
 
 ![Portfolio Preview](https://sarangnayak.github.io/sarang-portfolio-v4/preview.png)
 
-> **Screenshot placeholder:** Replace the image above with an actual screenshot of the live site. Recommended dimensions: `1280×720` or wider for retina displays.
-
 ---
 
 ## Project Overview
