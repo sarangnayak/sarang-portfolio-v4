@@ -89,3 +89,14 @@ sarang-portfolio-v4/
 │   └── index.js
 ├── package.json
 └── README.md
+```
+---
+
+# Clone the repository
+git clone https://github.com/sarangnayak/sarang-portfolio-v4.git
+
+# Navigate into the project directory
+cd sarang-portfolio-v4
+
+# Install dependencies
+npm install
