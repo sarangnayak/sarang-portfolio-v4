@@ -629,6 +629,7 @@ a {
 
 }
 
+
 @keyframes marquee {
     from {
         transform: translateX(-100%);
@@ -877,6 +878,7 @@ a {
 
 }
 
+
 .services__list {
 
     list-style: none;
@@ -886,6 +888,7 @@ a {
     padding: 0;
 
 }
+
 
 .services__item {
 
@@ -924,6 +927,7 @@ a {
 
 }
 
+
 .services__trigger {
 
     display: grid;
@@ -960,6 +964,7 @@ a {
 
 }
 
+
 .services__name {
 
     font-family: var(--ff-display);
@@ -979,6 +984,7 @@ a {
 
 }
 
+
 .services__arrow {
 
     font-family: var(--ff-mono);
@@ -989,12 +995,14 @@ a {
 
 }
 
+
 .services__item[data-open="true"]
 .services__arrow {
 
     transform: rotate(45deg);
 
 }
+
 
 .services__panel {
 
@@ -1014,6 +1022,7 @@ a {
         );
 
 }
+
 
 .services__item[data-open="true"]
 .services__panel {
@@ -1062,6 +1071,7 @@ a {
 
 }
 
+
 .services__desc {
 
     margin: 0;
@@ -1073,6 +1083,7 @@ a {
     line-height: 1.45;
 
 }
+
 
 .services__sublist {
 
@@ -1145,6 +1156,7 @@ a {
 
 }
 
+
 .services__cta:hover {
 
     background: var(--c-accent);
@@ -1152,6 +1164,7 @@ a {
     color: var(--c-fg);
 
 }
+
 
 /* =========================================================
    CONTACT
@@ -1206,6 +1219,7 @@ a {
 
 }
 
+
 .contact__head h2 em {
     display: inline-block;
     margin-top: 0.12em;
@@ -1213,6 +1227,7 @@ a {
     background: var(--c-accent);
     padding-inline: 0.08em;
 }
+
 
 .contact__head p {
 
