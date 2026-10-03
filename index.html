@@ -92,6 +92,8 @@
 
     <div class="section-head">
 
+        <div class="section-head__num">[03] / Selected Works</div>
+
         <h2 class="section-head__title">
             Selected Works
             <span style="color:var(--c-fg-soft)">2024–26</span>
@@ -367,88 +369,97 @@
 
     <div class="contact__grid">
 
-        <!-- FORM -->
+<!-- FORM -->
 
-        <form class="form" id="contact-form" novalidate>
+<form
+    class="form"
+    id="contact-form"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+    novalidate
+>
 
-            <div class="form__row form__row--split">
+    <!-- Web3Forms Access Key -->
+    <input
+        type="hidden"
+        name="access_key"
+        value="2e29bb61-7540-494f-9ea1-3efd215bc344"
+    >
 
-                <div>
+    <div class="form__row form__row--split">
 
-                    <label class="form__label" for="f-name">
-                        [01] Name
-                    </label>
+        <div>
 
-                    <input
-                        class="form__field"
-                        id="f-name"
-                        name="name"
-                        type="text"
-                        required
-                        autocomplete="name"
-                    >
+            <label class="form__label" for="f-name">
+                [01] Name
+            </label>
 
-                    <span class="form__hint">Required</span>
-
-                </div>
-
-
-                <div>
-
-                    <label class="form__label" for="f-email">
-                        [02] Email
-                    </label>
-
-                    <input
-                        class="form__field"
-                        id="f-email"
-                        name="email"
-                        type="email"
-                        required
-                        autocomplete="email"
-                    >
-
-                    <span class="form__hint">Required</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="form__row">
-
-                <label class="form__label" for="f-msg">
-                    [03] Brief
-                </label>
-
-                <textarea
-                    class="form__field form__field--area"
-                    id="f-msg"
-                    name="message"
-                    required
-                    placeholder="What we will going to work on?"
-                ></textarea>
-
-                <span class="form__hint">Required</span>
-
-            </div>
-
-
-            <div
-                class="form__status"
-                id="form-status"
-            ></div>
-
-
-            <button
-                class="form__submit"
-                type="submit"
+            <input
+                class="form__field"
+                id="f-name"
+                name="name"
+                type="text"
+                required
+                autocomplete="name"
             >
-                Send Message
-            </button>
 
-        </form>
+            <span class="form__hint">Required</span>
 
+        </div>
+
+
+        <div>
+
+            <label class="form__label" for="f-email">
+                [02] Email
+            </label>
+
+            <input
+                class="form__field"
+                id="f-email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+            >
+
+            <span class="form__hint">Required</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="form__row">
+
+        <label class="form__label" for="f-msg">
+            [03] Brief
+        </label>
+
+        <textarea
+            class="form__field form__field--area"
+            id="f-msg"
+            name="message"
+            required
+            placeholder="What are you working on?"
+        ></textarea>
+
+        <span class="form__hint">Required</span>
+
+    </div>
+
+
+    <div class="form__status" id="form-status"></div>
+
+
+    <button
+        class="form__submit"
+        type="submit"
+    >
+        Send Message
+    </button>
+
+</form>
 
         <!-- LOCATION MAP -->
 
@@ -1143,7 +1154,7 @@
 
         <span id="local-time-2">— : —</span>
 
-        <span>Built in India · Working globally</span>
+        <span>Built with HTML · CSS · JS</span>
 
     </div>
 
