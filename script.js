@@ -455,14 +455,60 @@ detail.addEventListener("click", event => {
    CONTACT FORM
    ========================================================= */
 
-const form =
-    document.getElementById("contact-form");
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+const submit = form.querySelector(".form__submit");
 
-const status =
-    document.getElementById("form-status");
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-const submit =
-    form.querySelector(".form__submit");
+    if (!form.reportValidity()) return;
+
+    status.dataset.state = "";
+    status.textContent = "";
+
+    submit.disabled = true;
+    submit.textContent = "Sending…";
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch(
+            "https://api.web3forms.com/submit",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+        const result = await response.json();
+
+        if (result.success) {
+            status.dataset.state = "ok";
+            status.textContent = "✓ Message sent successfully.";
+            form.reset();
+        } else {
+            throw new Error(
+                result.message || "Unable to send message."
+            );
+        }
+
+    } catch (error) {
+
+        status.dataset.state = "error";
+
+        status.textContent =
+            "✕ Unable to send your message. Please try again.";
+
+        console.error(error);
+
+    } finally {
+
+        submit.disabled = false;
+        submit.textContent = "Send Message";
+
+    }
+});
 
 
 form.addEventListener(
