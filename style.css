@@ -629,13 +629,14 @@ a {
 
 }
 
-
 @keyframes marquee {
-
-    to {
+    from {
         transform: translateX(-100%);
     }
 
+    to {
+        transform: translateX(0);
+    }
 }
 
 
