@@ -241,9 +241,7 @@ const revealTiles = () => {
 revealTiles();
 
 
-/* =========================================================
-   PROJECT DETAIL MODAL
-   ========================================================= */
+/*----- PROJECT DETAIL MODAL -----*/
 
 const detail = document.getElementById("detail");
 
