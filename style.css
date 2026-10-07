@@ -1,7 +1,3 @@
-/* =========================================================
-   ROOT
-   ========================================================= */
-
 :root {
 
     --c-bg: oklch(96% 0.005 90);
@@ -46,6 +42,22 @@
     --pad-x: var(--s-4);
 
     --sbw: 0.5rem;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+body.dark-mode {
+    color-scheme: dark;
+
+    --c-bg: oklch(14% 0.01 90);
+    --c-fg: oklch(94% 0.005 90);
+    --c-fg-soft: oklch(94% 0.005 90 / 0.62);
+    --c-line: oklch(94% 0.005 90 / 0.85);
+
+    --c-accent: oklch(86% 0.20 125);
+    --c-accent-2: oklch(70% 0.20 35);
 }
 
 
@@ -1831,11 +1843,8 @@ a {
    ========================================================= */
 
 .footer {
-
-    background: var(--c-fg);
-
-    color: var(--c-bg);
-
+    background: var(--c-bg);
+    color: var(--c-fg);
 }
 
 
@@ -1884,9 +1893,9 @@ a {
         );
 
     border-top:
-        var(--bw)
-        solid
-        oklch(96% 0.005 90 / 0.3);
+    var(--bw)
+    solid
+    var(--c-line);
 
 }
 
@@ -1920,9 +1929,9 @@ a {
 .footer__col + .footer__col {
 
     border-left:
-        var(--bw)
-        solid
-        oklch(96% 0.005 90 / 0.3);
+    var(--bw)
+    solid
+    var(--c-line);
 
 }
 
@@ -1993,9 +2002,9 @@ a {
         var(--pad-x);
 
     border-top:
-        var(--bw)
-        solid
-        oklch(96% 0.005 90 / 0.3);
+    var(--bw)
+    solid
+    var(--c-line);
 
     font-family: var(--ff-mono);
 
@@ -2479,4 +2488,144 @@ a {
 
     }
 
+}
+
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
+
+.theme-toggle {
+    width: 72px;
+    height: 38px;
+    position: relative;
+    flex-shrink: 0;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.theme-toggle__track {
+    width: 72px;
+    height: 38px;
+    display: block;
+    position: relative;
+
+    background: var(--c-fg);
+    border: 1px solid var(--c-line);
+    border-radius: 999px;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.theme-toggle__thumb {
+    width: 30px;
+    height: 30px;
+
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--c-bg);
+    border-radius: 50%;
+
+    transition:
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.25s ease;
+}
+
+.theme-toggle__moon,
+.theme-toggle__sun {
+    position: absolute;
+
+    font-family: system-ui, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.theme-toggle__moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.theme-toggle__sun {
+    opacity: 0;
+    transform: rotate(-30deg);
+}
+
+.theme-toggle.change .theme-toggle__thumb {
+    transform: translateX(34px);
+}
+
+.theme-toggle.change .theme-toggle__moon {
+    opacity: 0;
+    transform: rotate(30deg);
+}
+
+.theme-toggle.change .theme-toggle__sun {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 4px;
+}
+
+@media (max-width: 47.99rem) {
+    .theme-toggle {
+        width: 58px;
+        height: 32px;
+    }
+
+    .theme-toggle__track {
+        width: 58px;
+        height: 32px;
+    }
+
+    .theme-toggle__thumb {
+        width: 24px;
+        height: 24px;
+        top: 3px;
+        left: 3px;
+    }
+
+    .theme-toggle.change .theme-toggle__thumb {
+        transform: translateX(26px);
+    }
+
+    .theme-toggle__moon,
+    .theme-toggle__sun {
+        font-size: 0.75rem;
+    }
+}
+
+/* =========================================================
+   THEME TRANSITION
+   ========================================================= */
+
+/* =========================================================
+   THEME TRANSITION
+   ========================================================= */
+
+body,
+body *,
+.footer,
+.footer__cols,
+.footer__col,
+.footer__bottom {
+    transition:
+        background-color 1.0s ease,
+        color 1.0s ease,
+        border-color 1.0s ease,
+        fill 1.0s ease,
+        stroke 1.0s ease;
 }
