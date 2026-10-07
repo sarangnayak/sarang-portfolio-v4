@@ -681,3 +681,22 @@ if (themeToggle) {
         }
     });
 }
+
+/*----- LOCAL TIME ------*/
+
+const localTime = document.getElementById("local-time-2");
+
+function updateLocalTime() {
+    if (!localTime) return;
+
+    const time = new Date().toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+
+    localTime.textContent = time;
+}
+
+updateLocalTime();
+setInterval(updateLocalTime, 1000);
