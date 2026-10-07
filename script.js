@@ -1,5 +1,3 @@
-const POSTBIN_URL = "https://www.postb.in/1778049793423-9521197765134";
-
 /* =========================================================
    PROJECTS
    ========================================================= */
@@ -451,9 +449,7 @@ detail.addEventListener("click", event => {
 });
 
 
-/* =========================================================
-   CONTACT FORM
-   ========================================================= */
+/* ------CONTACT FORM------ */
 
 const form = document.getElementById("contact-form");
 const status = document.getElementById("form-status");
@@ -513,7 +509,7 @@ form.addEventListener("submit", async (e) => {
 
 form.addEventListener(
     "submit",
-    async event => {
+    async (event) => {
         event.preventDefault();
 
         if (!form.reportValidity()) return;
@@ -524,40 +520,29 @@ form.addEventListener(
         submit.disabled = true;
         submit.textContent = "Sending…";
 
-        const data =
-            Object.fromEntries(
-                new FormData(form).entries()
-            );
-
-        data.timestamp =
-            new Date().toISOString();
-
-        data.referrer =
-            document.referrer || "direct";
+        const formData = new FormData(form);
 
         try {
-            const response =
-                await fetch(POSTBIN_URL, {
+            const response = await fetch(
+                "https://api.web3forms.com/submit",
+                {
                     method: "POST",
+                    body: formData
+                }
+            );
 
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
+            const result = await response.json();
 
-                    body: JSON.stringify(data)
-                });
-
-            if (!response.ok) {
+            if (!result.success) {
                 throw new Error(
-                    `HTTP ${response.status}`
+                    result.message || "Unable to send message."
                 );
             }
 
             status.dataset.state = "ok";
 
             status.textContent =
-                "✓ Message received — replying soon";
+                "✓ Message sent successfully.";
 
             form.reset();
 
@@ -565,7 +550,9 @@ form.addEventListener(
             status.dataset.state = "error";
 
             status.textContent =
-                `✕ Failed (${error.message}) — replace POSTBIN_URL with your endpoint`;
+                "✕ Unable to send your message. Please try again.";
+
+            console.error(error);
 
         } finally {
             submit.disabled = false;
@@ -573,11 +560,8 @@ form.addEventListener(
         }
     }
 );
-
-
-/* =========================================================
-   SERVICES ACCORDION
-   ========================================================= */
+ 
+/*----- SERVICES ACCORDION -----*/
 
 document
     .querySelectorAll(".services__item")
@@ -654,27 +638,50 @@ const clock1 =
 const clock2 =
     document.getElementById("local-time-2");
 
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
 
-function tick() {
-    const time =
-        new Date().toLocaleTimeString(
-            "en-GB",
-            {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                timeZone: "Asia/Kolkata"
-            }
+const themeToggle = document.getElementById("theme-toggle");
+
+function setTheme(isDark) {
+    document.body.classList.toggle("dark-mode", isDark);
+
+    if (themeToggle) {
+        themeToggle.classList.toggle("change", isDark);
+
+        themeToggle.setAttribute(
+            "aria-pressed",
+            String(isDark)
         );
+    }
 
-    clock1.textContent =
-        `IND ${time}`;
-
-    clock2.textContent =
-        `India / ${time}`;
+    localStorage.setItem(
+        "theme",
+        isDark ? "dark" : "light"
+    );
 }
 
+const savedTheme = localStorage.getItem("theme");
 
-tick();
+setTheme(savedTheme === "dark");
 
-setInterval(tick, 1000);
+if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+        const isDark =
+            !document.body.classList.contains("dark-mode");
+
+        setTheme(isDark);
+    });
+
+    themeToggle.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+
+            const isDark =
+                !document.body.classList.contains("dark-mode");
+
+            setTheme(isDark);
+        }
+    });
+}
