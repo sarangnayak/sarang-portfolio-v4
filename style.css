@@ -739,141 +739,102 @@ a {
 }
 
 
-/* =========================================================
-   PROJECT MOSAIC
-   ========================================================= */
+
+/*----- PROJECT MOSAIC — SPACED, COMPACT LAYOUT -----*/
 
 .mosaic {
-
     display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0, 1fr)
-        );
+    /* Space between cards */
+    gap: clamp(12px, 2vw, 24px);
 
-    gap: var(--bw);
+    /* Space around the entire grid */
+    padding: clamp(16px, 3vw, 40px);
 
-    background: var(--c-line);
-
-    border-bottom:
-        var(--bw)
-        solid
-        var(--c-line);
-
+    /* Prevent the grid from looking edge-to-edge */
+    background: var(--c-bg);
+    border-bottom: 1px solid var(--c-line);
 }
-
 
 .tile {
-
     position: relative;
-
-    aspect-ratio: 1;
-
+    width: 100%;
+    aspect-ratio: 1.6 / 1;
     background: var(--c-bg);
-
     overflow: hidden;
-
     cursor: pointer;
-
 }
 
-
 .tile img {
-
+    display: block;
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
 
     transition:
-        transform
-        600ms
-        cubic-bezier(
-            0.2,
-            0.8,
-            0.2,
-            1
-        ),
-        filter
-        300ms;
-
+        transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        filter 300ms;
 }
-
 
 .tile:hover img {
-
-    transform: scale(1.08);
-
-    filter:
-        contrast(1.1)
-        saturate(0.9);
-
+    transform: scale(1.04);
+    filter: contrast(1.08) saturate(0.95);
 }
-
 
 .tile__label {
-
     position: absolute;
-
-    inset:
-        auto
-        0
-        0
-        0;
-
+    inset: auto 0 0 0;
     padding: var(--s-2);
-
     font-family: var(--ff-mono);
-
     font-size: 0.625rem;
-
     text-transform: uppercase;
-
     letter-spacing: 0.05em;
-
     color: var(--c-bg);
-
-    background:
-        linear-gradient(
-            to top,
-            oklch(15% 0 0 / 0.85),
-            transparent
-        );
-
+    background: linear-gradient(
+        to top,
+        oklch(15% 0 0 / 0.85),
+        transparent
+    );
     opacity: 0;
-
     transition: opacity 200ms;
-
     display: flex;
-
     justify-content: space-between;
-
     pointer-events: none;
-
 }
-
 
 .tile:hover .tile__label,
 .tile:focus-visible .tile__label {
-
     opacity: 1;
-
 }
 
-
+/* Tablet and mobile */
 @media (max-width: 47.99rem) {
-
     .mosaic {
         grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .tile {
+        aspect-ratio: 1.4 / 1;
     }
 
     .tile__label {
         display: none;
     }
+}
 
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .tile img,
+    .tile__label {
+        transition: none;
+    }
+
+    .tile:hover img {
+        transform: none;
+    }
 }
 
 
