@@ -143,9 +143,7 @@ const projects = [
 ];
 
 
-/* =========================================================
-   PROJECT MOSAIC
-   ========================================================= */
+/*----- PROJECT MOSAIC -----*/
 
 const mosaic = document.getElementById("mosaic");
 
