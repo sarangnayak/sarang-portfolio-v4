@@ -326,9 +326,7 @@ function fillDetail(project) {
 }
 
 
-/* =========================================================
-   MODAL OPEN / CLOSE
-   ========================================================= */
+/*----- MODAL OPEN / CLOSE -----*/
 
 function applyOpenState() {
     detail.dataset.open = "true";
