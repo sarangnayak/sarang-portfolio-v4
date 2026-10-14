@@ -193,9 +193,7 @@ const tiles = projects.map((project, index) => {
 });
 
 
-/* =========================================================
-   PROJECT REVEAL
-   ========================================================= */
+/*----- PROJECT REVEAL -----*/
 
 const revealTiles = () => {
     if (
