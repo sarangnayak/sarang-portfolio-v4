@@ -626,9 +626,7 @@ const clock1 =
 const clock2 =
     document.getElementById("local-time-2");
 
-/* =========================================================
-   THEME TOGGLE
-   ========================================================= */
+/*----- THEME TOGGLE -----*/
 
 const themeToggle = document.getElementById("theme-toggle");
 
